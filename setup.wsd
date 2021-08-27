@@ -1,0 +1,14 @@
+@startuml
+
+actor setup
+
+setup --> ":WiFi" : begin(ssid, password)
+loop WiFi.status() != WL_CONNECTED
+end
+setup --> ":WiFi" : localIP()
+
+
+setup --> "client : PubSubClient" : setServer("test.mosquitto.org", 1883)
+setup --> "client : PubSubClient" : setCallbak(callback)
+
+@enduml

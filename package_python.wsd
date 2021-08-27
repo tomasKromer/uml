@@ -1,0 +1,34 @@
+@startuml
+
+!$paho_mqtt  = "MQQT"
+!$numpy  = "numpy"
+!$math  = "math"
+!$matplotlib  = "matplotlib"
+
+!$main = "main"
+
+package "$paho_mqtt" {
+        class client {       
+        }
+}
+
+package "$matplotlib" {
+        class pyplot {       
+        }
+}
+
+package "$numpy" {
+}
+
+package "$math" {
+}
+
+package "$main" {
+}
+
+client ..> "$main"
+pyplot ..> "$main"
+"$numpy" ..> "$main"
+"$math" ..> "$main"
+
+@enduml

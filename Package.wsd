@@ -1,0 +1,29 @@
+@startuml
+
+!$Main  = "Main"
+!$Setup  = "Inicializacion de Recursos"
+!$Loop = "Loop"
+!$Librerias = "Librerias"
+!$ESP8266WiFi  = "ESP8266WiFi"
+!$PubSubClient  = "PubSubClient"
+!$Arduino = "Arduino"
+
+package "$Librerias" {
+        package "$ESP8266WiFi" {
+        }
+        package "$PubSubClient" {
+        }
+        package "$Arduino" {
+        }
+}
+
+package "$Main" {
+        package "$Setup" {
+        }
+        package "$Loop" {
+        }
+}
+
+"$Librerias" ..> "$Main": "<<use>>"
+
+@enduml

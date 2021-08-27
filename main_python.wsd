@@ -1,0 +1,30 @@
+@startuml
+
+actor main
+
+create "client : Client"
+
+main --> "client : Client" : <<constructor>>
+main --> "client : Client" : <<configure on_connect>>
+main --> "client : Client" : <<configure on_message>>
+main --> "client : Client" : connect('test.mosquitto.org', 1883)
+activate "client : Client"
+    alt conectado
+        "client : Client" --> "client : Client" : subscribe(Topic)
+    end
+    
+    main --> "client : Client" : loop_forever()
+
+    alt Mensaje Recibido Desde Servidor
+        alt ! Numero de Muestras Requerido
+            "client : Client" --> "Temperatura : List" : append(value)
+            "client : Client" --> "Tiempo : List" : append(value)
+        else
+            "client : Client" --> ": plt" : plot(Tiempo, Temperatura)
+        end
+    end
+
+deactivate
+
+
+@enduml
